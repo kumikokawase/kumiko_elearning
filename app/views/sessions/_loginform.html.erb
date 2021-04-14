@@ -1,0 +1,33 @@
+<div id="blue">
+  <div class="container">
+    <div class="row">
+      <h3>Login</h3>
+    </div>
+  </div>
+</div>
+<div class="container mtb">
+ <div class="row">
+  <div class="col-lg-12">
+    <h4>Please enter your informations.</h4>
+      <div class="hline"></div>
+        <%= form_for(:session, url: sessions_path) do |f| %>
+        <form class="contact-form php-mail-form">
+                <div class="form-group">
+                <%= f.label :email %>
+                <%= f.text_field :email, class: "form-control" %>
+                <div class="validate"></div>
+                </div>
+                <div class="form-group">
+                <%= f.label :password %>
+                <%= f.password_field :password, class: "form-control" %>
+                <div class="validate"></div>
+                </div>
+                <div class="form-send">
+                <button type="button"><%= f.submit "Login", class:"btn btn-warning" %></button>
+                </div>   
+        <p class="mt-2">New here? <%= link_to "Sign up now!", signup_path %></p>
+        </form>
+        <% end %>
+  </div>
+ </div>
+</div>
