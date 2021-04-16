@@ -10,12 +10,17 @@
 
         <!-- Google Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Raleway:400,700,900|Lato:400,900" rel="stylesheet">
-
     </head>
 
-  <body>
-    <%= render 'layouts/header' %>
-    <%= yield %>
-    <%= render 'layouts/footer' %>
-  </body>
+    <body>
+        <%= render 'layouts/header' %>
+    
+        <div class="container pt-4 mb-0">
+            <%= render 'shared/error_messages' %>
+        </div>
+        
+        <%= yield %>
+    
+        <%= render 'layouts/footer' %>
+    </body>
 </html>
