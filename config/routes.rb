@@ -20,11 +20,5 @@ Rails.application.routes.draw do
       get :following, :followers
     end
   end
-
-  #resources :other_user do
-    #member do
-      #get :following, :followers
-    #end
-  #end
   
 end

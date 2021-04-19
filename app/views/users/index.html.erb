@@ -18,7 +18,6 @@
             <li style="	margin-bottom: 50px;">
                 <i class="fa"><%= gravatar_for user, size: 100 %></i>
                 <h4><%= link_to user.name, user %></h4>
-                <p><%= render 'follow_form' if logged_in? %></p>
             </li>
             </div>
             <% end %>
