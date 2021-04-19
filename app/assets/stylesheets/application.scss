@@ -81,6 +81,11 @@ background:#2B2E31;
 text-align: center
 }
 
+li {
+	list-style: none;
+  }
+ 
+
 /*	################################################################
 	BOOTSTRAP MODIFICATIONS & TWEAKS
 ################################################################# */
@@ -192,7 +197,7 @@ text-align: center
 }
 
 .mtb {
-	margin-top: 80px;
+	margin-top: 30px;
 	margin-bottom: 80px;
 }
 
@@ -219,7 +224,7 @@ text-align: center
 #headerwrap {
 	background-color: #00b3fe;
 	min-height: 550px;
-	padding-top: 100px;
+	padding-top: 50px;
 	padding-bottom: 0px;
 	text-align: center;
 }
@@ -240,7 +245,7 @@ text-align: center
 
 /* Services Wrap */
 #service {
-	margin-top: 100px;
+	margin-top: 30px;
 	margin-bottom: 80px;
 }
 

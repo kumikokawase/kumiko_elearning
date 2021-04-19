@@ -1,8 +1,7 @@
 class UsersController < ApplicationController
-
-  def index
-    @users = User.all
-  end
+  # FILTER
+  before_action :only_loggedin_users, only: [:index, :edit, :update, :destroy, :following, :followers]
+  before_action :correct_user, only: [:edit, :update]
 
   def new
     @user = User.new
@@ -23,13 +22,19 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
   end
 
+  def index
+    # @users = User.all
+    @users = User.paginate(page: params[:page], per_page: 12)
+    # @user = User.find(params[:other_user.id])
+  end
+
   def edit
     @user = User.find(params[:id])
   end 
 
   def update
     @user = User.find(params[:id])
-    if @user.update_atributes(user_params)
+    if @user.update_attributes(user_params)
       flash[:success] = "Saved successfully!"
       redirect_to @user
     else
@@ -41,7 +46,23 @@ class UsersController < ApplicationController
   def destroy
     User.find(params[:id]).destroy
     redirect_to users_url
-  end 
+  end
+
+  def following
+    @title = "Following"
+    @user = User.find(params[:id])
+    @users = @user.followed_users.paginate(page: params[:page], per_page: 5)
+    @all_users = @user.followed_users
+    render 'show_follow'
+  end
+  
+  def followers
+    @title = "Followers"
+    @user = User.find(params[:id])
+    @users = @user.followers.paginate(page: params[:page], per_page: 5)
+    @all_users = @user.followers
+    render 'show_follow'    
+  end  
 
   private
 
@@ -50,11 +71,8 @@ class UsersController < ApplicationController
   end
 
   def correct_user
+    # You cannot access this page UNLESS you are the current user
     @user = User.find(params[:id])
-    # go to HOME PAGE
-    # UNLESS
-    # current user? -> ID of this user
-    # is the same as the ID of the user being checked
     redirect_to(root_url) unless current_user?(@user)
   end
   

@@ -1,2 +1,31 @@
-<h1>Users#index</h1>
-<p>Find me in app/views/users/index.html.erb</p>
+<% provide(:title, 'Users') %>
+<div id="blue">
+    <div class="container">
+        <div class="row">
+            <h3>Users</h3>
+        </div>
+    </div>
+</div>
+
+
+<div id="service">
+    <div class="container">
+        <div class="centered">
+        </div>
+        <div class="row">
+            <% @users.each do |user| %>
+            <div class="col-md-3 centered">
+            <li style="	margin-bottom: 50px;">
+                <i class="fa"><%= gravatar_for user, size: 100 %></i>
+                <h4><%= link_to user.name, user %></h4>
+                <p><%= render 'follow_form' if logged_in? %></p>
+            </li>
+            </div>
+            <% end %>
+        </div>
+        <div class="centered">
+            <%= will_paginate %>
+        </div>
+        </div>
+    </div>
+</div>

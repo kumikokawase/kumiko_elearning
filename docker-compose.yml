@@ -1,10 +1,9 @@
 version: '3'
 services:
   db:
-    image: mysql:5.7@sha256:b3b2703de646600b008cbb2de36b70b21e51e7e93a7fca450d2b08151658b2dd
+    image: mysql:5.7@sha256:4cb929cd5b89f157284f0572feff652af31e4e29db3c3eb32565d6e3bce0fa84
     ports:
       - "4406:3306"
-    restart: always
     environment:
       - MYSQL_DATABASE=elearning_db
       - MYSQL_ROOT_PASSWORD=password

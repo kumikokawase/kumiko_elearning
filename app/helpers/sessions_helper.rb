@@ -27,5 +27,10 @@ module SessionsHelper
   def log_out
     session.delete(:user_id) # deletes memory in browser
     @current_user = nil       # deletes you as current_user
-  end    
+  end
+    
+  def only_loggedin_users
+    redirect_to login_url unless logged_in?
+  end
+      
 end
