@@ -1,25 +1,24 @@
 Rails.application.routes.draw do
+  resources :users
+  resources :sessions, only: [:new, :create, :destroy]
 
-  get 'sessions/new'
-  get 'sessions/create'
-  get 'sessions/destroy'
-  root 'static_pages#home'
+  # For follow and unfollow
+  resources :relationships, only: [:create, :destroy]
   
+  root 'static_pages#home'
+
   get '/about', to: 'static_pages#about'
   get '/contact', to: 'static_pages#contact'
-   
-  get '/signup', to: 'users#new' 
 
-   # /login
-   get '/login', to: 'sessions#new'
+  get '/signup', to: 'users#new'
+  # http_action '/route', to: 'controller#page'
+  get '/login', to: 'sessions#new'
+  delete '/logout', to: 'sessions#destroy'
 
-   # /logout
-   delete '/logout', to: 'sessions#destroy'
- 
-   resources :users
-     
-   # Sessions
-   resources :sessions, only: [:new, :create, :destroy]
+  resources :users do
+    member do
+      get :following, :followers
+    end
+  end
   
-
 end

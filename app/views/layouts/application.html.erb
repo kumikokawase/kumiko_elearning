@@ -14,13 +14,8 @@
 
     <body>
         <%= render 'layouts/header' %>
-    
-        <div class="container pt-4 mb-0">
-            <%= render 'shared/error_messages' %>
-        </div>
-        
+        <%= render 'shared/error_messages' %>        
         <%= yield %>
-    
         <%= render 'layouts/footer' %>
     </body>
 </html>

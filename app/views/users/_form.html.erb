@@ -1,15 +1,3 @@
-<div id="blue">
-    <div class="container">
-        <div class="row">
-            <h3>Signup</h3>
-        </div>
-    </div>
-</div>
-<div class="container mtb">
-    <div class="row">
-        <div class="col-lg-12">
-            <h4>Please enter your informations.</h4>
-            <div class="hline"></div>
             <%= form_for @user do |f| %>
             <form class="contact-form php-mail-form">
 
@@ -40,13 +28,5 @@
                     <div class="form-send">
                         <button type="button"><%= f.submit "Save", class:"btn btn-warning" %></button>
                     </div>
-
-                    <p class="mt-2">
-                        Do you already have an account?<%= link_to "Log in!", login_path %>
-                    </p>
-
             </form>
-            <% end %>     
-        </div>
-    </div>
-</div>
+            <% end %>    

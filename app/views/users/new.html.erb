@@ -1,2 +1,20 @@
 <% provide(:title, 'Signup') %>
-<%= render 'form' %>
+<div id="blue">
+    <div class="container">
+        <div class="row">
+            <h3>Signup</h3>
+        </div>
+    </div>
+</div>
+<div class="container mtb">
+    <div class="row">
+        <div class="col-lg-12">
+            <h4>Please enter your informations.</h4>
+            <div class="hline"></div>
+                <%= render 'form' %>
+                <p class="mt-2">
+                    Do you already have an account?<%= link_to "Log in!", login_path %>
+                </p> 
+        </div>
+    </div>
+</div>

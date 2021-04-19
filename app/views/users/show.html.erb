@@ -1,11 +1,26 @@
 <% provide(:title, @user.name) %>
-<div class="row">
-    <aside class="span">
-        <section>
-            <h1>
-                <%= gravatar_for @user %>
-                <%= @user.name %>        
-            </h1>
-        </section>
-    </aside>
-<div>
+<div id="blue">
+    <div class="container">
+        <div class="row">
+            <h3><%= @user.name %>'s Profile.</h3>
+        </div>
+    </div>
+</div>
+<div id="service">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4 centered">
+            <i class="fa"><%= gravatar_for @user, size: 100 %></i>
+            <h4><%= @user.name %></h4>
+            <p><%= render 'follow_form' if logged_in? %></p>
+            <hr>
+            <p><%= render 'shared/stats' %></p>
+            </div>
+
+            <div class="col-md-8">
+            <h4 class="centered">Activities</h4>
+            <div class="hline"></div>
+        </div>
+        </div>
+    </div>
+</div>
