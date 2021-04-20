@@ -18,6 +18,11 @@
                 
                 <% if logged_in? %>
                 <%# THERE IS A CURRENT USER %>
+                    <% if current_user.admin? %>
+                    <li class="nav-item">
+                        <%= link_to "Manage Categories", admin_categories_path, class: "nav-link" %>
+                    </li>
+                    <% end %>
                 <li>
                     <%= link_to "Users", users_path, class: "nav-link" %>
                 </li>
