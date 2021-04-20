@@ -20,6 +20,11 @@ User.create!(
     admin: true
 )
 
+Categories.create!(
+    title: "math",
+    description: "lesson for math",
+)
+
 # More than 1 user
 99.times do |n|
     name = Faker::Name.name #this is from FAKER website

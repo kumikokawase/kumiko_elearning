@@ -9,6 +9,7 @@ class Admin::CategoriesController < ApplicationController
   end
 
   def show
+    @microposts = @admin_user.categories
   end
 
   def index
