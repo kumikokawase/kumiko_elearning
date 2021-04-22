@@ -37,9 +37,6 @@ class User < ApplicationRecord
   def unfollow(other_user)
     active_relationships.find_by(followed_id: other_user.id).destroy
   end
-
-# Admin_user
-  has_many :passive_relationships, foreign_key: "admin_user"
   
   def active_user?
     active_relationships.find_by(admin_user: id)

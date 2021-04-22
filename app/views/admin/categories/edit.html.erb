@@ -9,7 +9,7 @@
 
 <div id="service">
     <div class="container">
-    <%= form_for (@category) do |f| %>
+    <%= form_for [:admin, @category] do |f| %>
         <div class="field">
             <%= f.text_area :title, placeholder: "title", class: "w-100 p-2" %>
             <%= f.text_area :description, placeholder: "description", class: "w-100 p-2" %>

@@ -1,15 +1,15 @@
 class Admin::CategoriesController < ApplicationController
-  before_action :if_not_admin 
+  before_action :if_not_admin
   
    def new
      @category = Category.new
    end
 
    def create
-     @category = Categories.new(category_params)
+     @category = Category.new(category_params)
      if @category.save
-       flash[:success] = "Up"
-       redirect_to admin_category_path
+       redirect_to admin_categories_path
+       flash[:success] = "Created successfully!"
      else
        flash[:danger] = "Invalid"
        render 'new'
@@ -27,8 +27,8 @@ class Admin::CategoriesController < ApplicationController
    def update
      @category = Category.find(params[:id])
      if @category.update_attributes(category_params)
-       flash[:success] = "Saved"
-       redirect_to show_admin_category_path
+       redirect_to admin_categories_path
+       flash[:success] = "Saved!"
      else
        flash[:danger] = "Invalid"
        render 'edit'
@@ -42,7 +42,7 @@ class Admin::CategoriesController < ApplicationController
 
   def destroy
     Category.find(params[:id]).destroy
-    redirect_to root_path
+    redirect_to admin_categories_path
   end
 
   private
