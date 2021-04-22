@@ -1,0 +1,35 @@
+<% provide(:title, @category.title) %>
+<div id="blue">
+    <div class="container">
+        <div class="row">
+            <h3>Manage Categories</h3>
+        </div>
+    </div>
+</div>
+
+<div id="service">
+    <div class="container">
+        <div class="centered">
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th scope="col">Category</th>
+      <th scope="col">Title</th>
+      <th scope="col">Description</th>
+      <th scope="col">Words</th>
+      <th scope="col">Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row">#</th>
+      <td><%= @category.title %></td>
+      <td><%= @category.description %></td>
+      <td>5</td>
+      <td><button type="button" class="btn btn-warning mr-1">Edit</button><button type="button" class="btn btn-secondary">Delete</button></td>
+    </tr>
+  </tbody>
+</table>
+</div>
+    </div>
+</div>

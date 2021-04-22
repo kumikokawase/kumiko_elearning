@@ -19,23 +19,27 @@ class User < ApplicationRecord
 
   # Followers
   has_many :passive_relationships, foreign_key: "followed_id", # no conflict becauser they have diffrent FK
-  class_name: "Relationship", # able to use the same table
-  dependent: :destroy
+                                   class_name: "Relationship", # able to use the same table
+                                   dependent: :destroy
   has_many :followers, through: :passive_relationships, source: :follower
 
   # Returns true if the current user is following the other user
   def following?(other_user)
-  active_relationships.find_by(followed_id: other_user.id)
+    active_relationships.find_by(followed_id: other_user.id)
   end
-
+  
   # Follows a user
   def follow(other_user)
-  active_relationships.create!(followed_id: other_user.id)
+    active_relationships.create!(followed_id: other_user.id)
   end
 
   # Unfollows a user
   def unfollow(other_user)
-  active_relationships.find_by(followed_id: other_user.id).destroy
+    active_relationships.find_by(followed_id: other_user.id).destroy
   end
+  
+  def active_user?
+    active_relationships.find_by(admin_user: id)
+  end  
   
 end

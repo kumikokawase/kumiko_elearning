@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  
   resources :users
   resources :sessions, only: [:new, :create, :destroy]
 
@@ -11,7 +12,7 @@ Rails.application.routes.draw do
   get '/contact', to: 'static_pages#contact'
 
   get '/signup', to: 'users#new'
-  # http_action '/route', to: 'controller#page'
+  
   get '/login', to: 'sessions#new'
   delete '/logout', to: 'sessions#destroy'
 
@@ -20,5 +21,10 @@ Rails.application.routes.draw do
       get :following, :followers
     end
   end
+
+  resources :categories
+    namespace :admin do
+      resources :categories, only: [:index, :new, :create, :show, :edit, :update, :destroy]
+    end
   
 end
