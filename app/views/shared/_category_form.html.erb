@@ -1,0 +1,7 @@
+<%= form_for(@category) do |f| %>
+    <div class="field">
+        <%= f.text_area :title, placeholder: "title", class: "w-100 p-2" %>
+        <%= f.text_area :description, placeholder: "description", class: "w-100 p-2" %>
+    </div>
+    <%= f.submit "Post", class: "btn btn-block btn-primary" %>
+<% end %>

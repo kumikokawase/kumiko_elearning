@@ -20,10 +20,12 @@ User.create!(
     admin: true
 )
 
-Categories.create!(
-    title: "math",
-    description: "lesson for math",
-)
+20.times do |n|
+    Category.create!(
+        title: "Category#{n + 1}",
+        description: "It is about Category#{n + 1}.",
+    )
+end
 
 # More than 1 user
 99.times do |n|

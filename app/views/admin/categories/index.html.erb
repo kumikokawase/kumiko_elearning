@@ -1,9 +1,21 @@
-<h1>Admin::Categories#index</h1>
-<p>Manage Categories</p>
+<% provide(:title, 'Manage Categories') %>
+<div id="blue">
+    <div class="container">
+        <div class="row">
+            <h3>Manage Categories</h3>
+        </div>
+    </div>
+</div>
+
+<div id="service">
+    <div class="container">
+    <p>There are <%= @id.count %> categories now. Edit or delete the category.</p>
+    <button type="button" class="btn btn-success btn-lg mb-3"><%= link_to "Create New Category!", new_admin_category_path %></button>
+        <div class="centered">
 <table class="table table-striped">
   <thead>
     <tr>
-      <th scope="col">#</th>
+      <th scope="col">Category</th>
       <th scope="col">Title</th>
       <th scope="col">Description</th>
       <th scope="col">Words</th>
@@ -11,33 +23,21 @@
     </tr>
   </thead>
   <tbody>
+    <% @category.each do |category| %>
     <tr>
-      <th scope="row">1</th>
-      <td>Mark</td>
-      <td>Otto</td>
-      <td>@mdo</td>
-      <td>@mdo</td>
+      <th scope="row"><%= category.id %></th>
+      <td><%= category.title %></td>
+      <td><%= category.description %></td>
+      <td>5</td>
+      <td><button type="button" class="btn btn-warning mr-1">
+      <%= link_to 'Edit', edit_admin_category_path(category) %></button>
+      <button type="button" class="btn btn-secondary">
+      <%= link_to 'Delete', admin_category_path(category), method: :delete,
+      data: { confirm: "You sure?" } %></button></td>
     </tr>
-    <tr>
-      <th scope="row">2</th>
-      <td>Jacob</td>
-      <td>Thornton</td>
-      <td>@fat</td>
-      <td>@mdo</td>
-    </tr>
-    <tr>
-      <th scope="row">3</th>
-      <td>Larry the Bird</td>
-      <td>@twitter</td>
-      <td>@mdo</td>
-      <td>@mdo</td>
-    </tr>
-    <tr>
-      <th scope="row">4</th>
-      <td>Larry the Bird</td>
-      <td>@twitter</td>
-      <td>@mdo</td>
-      <td>@mdo</td>
-    </tr>
+    <% end %>
   </tbody>
 </table>
+</div>
+    </div>
+</div>
