@@ -1,0 +1,52 @@
+<% provide(:title, 'Categories') %>
+<div id="blue">
+    <div class="container">
+        <div class="row">
+            <h3>Categories List</h3>
+        </div>
+    </div>
+</div>
+
+<div id="service">
+    <div class="container">
+        <h4>You allready learned 5 categories!</h4>
+            <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">
+            <label class="form-check-label" for="inlineRadio1">Show all (<%= @id.count %>)</label>
+            </div>
+            <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
+            <label class="form-check-label" for="inlineRadio2">Learned (5)</label>
+            </div>
+            <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio3" value="option3">
+            <label class="form-check-label" for="inlineRadio3">Not learned (15)</label>
+            </div>
+       
+    <div class="centered">  
+        <div class="hline mb-2"></div>
+        <table class="table table-striped">
+        <thead>
+            <tr>
+            <th scope="col">Category No.</th>
+            <th scope="col">Title</th>
+            <th scope="col">Description</th>
+            <th scope="col">Words</th>
+            <th scope="col">Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% @category.each do |category| %>
+            <tr>
+            <th scope="row"><%= category.id %></th>
+            <td><%= category.title %></td>
+            <td><%= category.description %></td>
+            <td>5</td>
+            <td><button type="button" class="btn btn-warning mr-1">learn</button></td>
+            </tr>
+            <% end %>
+        </tbody>
+        </table>
+    </div>
+    </div>
+</div>

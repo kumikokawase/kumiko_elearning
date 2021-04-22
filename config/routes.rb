@@ -22,7 +22,7 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :categories
+  resources :categories, only: [:index]
     namespace :admin do
       resources :categories, only: [:index, :new, :create, :show, :edit, :update, :destroy]
     end
