@@ -9,6 +9,7 @@ class CreateCategories < ActiveRecord::Migration[5.2]
 
     create_table :words do |t|
       t.belongs_to :category
+      t.string :words
       t.integer :category_id
 
       t.timestamps

@@ -39,10 +39,11 @@ ActiveRecord::Schema.define(version: 2021_04_23_112927) do
   end
 
   create_table "words", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.string "words"
     t.integer "category_id"
+    t.string "words"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["category_id"], name: "index_words_on_category_id"
   end
 
 end

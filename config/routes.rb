@@ -22,15 +22,17 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :categories, only: [:index]
-    namespace :admin do
-      resources :categories, only: [:index, :new, :create, :show, :edit, :update, :destroy]
-    end
+  # resources :categories, only: [:index]
+  #   namespace :admin do
+  #     resources :categories, only: [:index, :new, :create, :show, :edit, :update, :destroy]
+  #   end
   
-  get 'admin/categories/:id/words', to: 'admin/categories#show'
+  resources :categories, only: [:index]
 
-  resources :words, only: [:index, :new, :create, :show, :edit, :update, :destroy]
-  get 'admin/categories/:id/words/:id/edit', to: 'words#edit'
-  get 'admin/categories/:id/words/new', to: 'words#new'
+  namespace :admin do
+    resources :categories do
+      resources :words, only: [:index, :new, :create, :show, :edit, :update, :destroy]
+    end
+  end
 
 end
