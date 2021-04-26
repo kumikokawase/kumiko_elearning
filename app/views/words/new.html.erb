@@ -1,0 +1,19 @@
+<% provide(:title, 'New | Manage Categories') %>
+<div id="blue">
+    <div class="container">
+        <div class="row">
+            <h3>Create NEW Word</h3>
+        </div>
+    </div>
+</div>
+
+<div id="service">
+    <div class="container">
+    <%= form_for @word do |f| %>
+        <div class="field">
+            <%= f.text_area :words, placeholder: "words", class: "w-100 p-2" %>
+        </div>
+        <%= f.submit "Post", class: "btn btn-block btn-primary" %>
+    <% end %>
+    </div>
+</div>

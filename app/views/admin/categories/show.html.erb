@@ -2,34 +2,48 @@
 <div id="blue">
     <div class="container">
         <div class="row">
-            <h3>Manage Categories</h3>
+            <h3>Category > Word</h3>
         </div>
     </div>
 </div>
 
 <div id="service">
     <div class="container">
+        <h4>No.<%= @category.id %> <%= @category.title %></h4>
+        <p>description: <%= @category.description %></p>
+
+        <% if @category.words.any? %>
+
+        <button type="button" class="btn btn-success btn-lg mb-3">
+          <%= link_to "Create New Word!" %></button>
+        
         <div class="centered">
-<table class="table table-striped">
-  <thead>
-    <tr>
-      <th scope="col">Category</th>
-      <th scope="col">Title</th>
-      <th scope="col">Description</th>
-      <th scope="col">Words</th>
-      <th scope="col">Action</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th scope="row">#</th>
-      <td><%= @category.title %></td>
-      <td><%= @category.description %></td>
-      <td>5</td>
-      <td><button type="button" class="btn btn-warning mr-1">Edit</button><button type="button" class="btn btn-secondary">Delete</button></td>
-    </tr>
-  </tbody>
-</table>
-</div>
+          <table class="table table-striped">
+            <thead>
+              <tr>
+                <th scope="col">Word</th>
+                <th scope="col">Title</th>
+                <th scope="col">Action</th>
+              </tr>
+            </thead>
+            
+            <tbody>
+              <% @category.words.each do |word| %>
+              <tr>
+                <th scope="row"><%= word.id %></th>
+                <td><%= word.words %></td>
+                <td><button type="button" class="btn btn-warning mr-1">Edit</button><button type="button" class="btn btn-secondary">Delete</button></td>
+              </tr>
+              <% end %>
+            </tbody>            
+          </table>
+        </div>
+        <% else %>
+        <div class="centered">
+          <h4>Nothing is registered.</h4>
+          <button type="button" class="btn btn-success btn-lg mt-3 mb-3">
+          <%= link_to "Create New Word!" %></button>
+        </div> 
+        <% end %>
     </div>
 </div>
