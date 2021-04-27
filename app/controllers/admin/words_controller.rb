@@ -22,6 +22,7 @@ class Admin::WordsController < ApplicationController
  
     def update
       @word = Word.find(params[:id])
+      @category = Category.find_by_id(params[:category_id])
       if @word.update_attributes(word_params)
         redirect_to admin_category_words_path
         flash[:success] = "Saved!"
@@ -32,8 +33,7 @@ class Admin::WordsController < ApplicationController
     end
 
     def index
-      @category = Category.find(params[:category_id])
-      @word = word.all
+      @category = Category.find(params[:id])
     end
  
    def destroy
