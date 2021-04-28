@@ -2,14 +2,15 @@ class Admin::WordsController < ApplicationController
     before_action :if_not_admin
   
     def new
-      @category = Category.find(params[:id])
-      @word = current_category.words.create
+      @category = Category.find(params[:category_id])
+      @word = @category.words.new
     end
  
     def create
-      @word = current_category.words.create(word_params)
+      @category = Category.find(params[:category_id])
+      @word = @category.words.new(word_params)
       if @word.save
-        redirect_to admin_category_words_path
+        redirect_to admin_category_path(@category)
         flash[:success] = "Created successfully!"
       else
         flash[:danger] = "Invalid"
