@@ -2,11 +2,12 @@ class Admin::WordsController < ApplicationController
     before_action :if_not_admin
   
     def new
-      @word = Word.new
+      @category = Category.find(params[:id])
+      @word = current_category.words.create
     end
  
     def create
-      @word = Word.create(word_params)
+      @word = current_category.words.create(word_params)
       if @word.save
         redirect_to admin_category_words_path
         flash[:success] = "Created successfully!"
@@ -17,14 +18,14 @@ class Admin::WordsController < ApplicationController
     end
    
     def edit
-      @word = Word.find(params[:id])
+      @category = Category.find(params[:id])
+      @word = @category.words.find(params[:id])
     end
  
     def update
-      @word = Word.find(params[:id])
-      @category = Category.find_by_id(params[:category_id])
+      @word = current_category.words.find(params[:id])
       if @word.update_attributes(word_params)
-        redirect_to admin_category_words_path
+        redirect_to admin_category_path
         flash[:success] = "Saved!"
       else
         flash[:danger] = "Invalid"
@@ -34,6 +35,7 @@ class Admin::WordsController < ApplicationController
 
     def index
       @category = Category.find(params[:id])
+      @word = @category.words.find(params[:id])
     end
  
    def destroy
