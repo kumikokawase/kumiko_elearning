@@ -18,14 +18,15 @@ class Admin::WordsController < ApplicationController
     end
    
     def edit
-      @category = Category.find(params[:id])
+      @category = Category.find(params[:category_id])
       @word = @category.words.find(params[:id])
     end
  
     def update
-      @word = current_category.words.find(params[:id])
+      @category = Category.find_by(params[:category_id])
+      @word = Words.find(params[:id])
       if @word.update_attributes(word_params)
-        redirect_to admin_category_path
+        redirect_to admin_category_path(@category)
         flash[:success] = "Saved!"
       else
         flash[:danger] = "Invalid"

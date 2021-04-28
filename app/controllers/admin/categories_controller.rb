@@ -17,6 +17,7 @@ class Admin::CategoriesController < ApplicationController
    end
    def show
     @category = Category.find(params[:id])
+    @word = @category.words.find(params[:id])
    end
 
    def edit
