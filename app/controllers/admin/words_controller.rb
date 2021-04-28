@@ -23,8 +23,8 @@ class Admin::WordsController < ApplicationController
     end
  
     def update
-      @category = Category.find_by(params[:category_id])
-      @word = Words.find(params[:id])
+      @category = Category.find(params[:category_id])
+      @word = Word.find(params[:id])
       if @word.update_attributes(word_params)
         redirect_to admin_category_path(@category)
         flash[:success] = "Saved!"
