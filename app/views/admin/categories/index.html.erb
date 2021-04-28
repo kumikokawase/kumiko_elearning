@@ -2,14 +2,14 @@
 <div id="blue">
     <div class="container">
         <div class="row">
-            <h3>Manage Categories</h3>
+            <h3>Category List</h3>
         </div>
     </div>
 </div>
 
 <div id="service">
     <div class="container">
-    <p>There are <%= @id.count %> categories now. Edit or delete the category.</p>
+    <h4>There are <%= @id.count %> categories now.</h4>
     <button type="button" class="btn btn-success btn-lg mb-3"><%= link_to "Create New Category!", new_admin_category_path %></button>
         <div class="centered">
 <table class="table table-striped">
@@ -26,9 +26,9 @@
     <% @category.each do |category| %>
     <tr>
       <th scope="row"><%= category.id %></th>
-      <td><%= category.title %></td>
+      <td><%= link_to category.title, admin_category_path(category)  %></td>
       <td><%= category.description %></td>
-      <td>5</td>
+      <td><%= category.words.ids.count %></td>
       <td><button type="button" class="btn btn-warning mr-1">
       <%= link_to 'Edit', edit_admin_category_path(category) %></button>
       <button type="button" class="btn btn-secondary">

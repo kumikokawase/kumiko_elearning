@@ -38,4 +38,12 @@ ActiveRecord::Schema.define(version: 2021_04_19_134812) do
     t.boolean "admin", default: false
   end
 
+  create_table "words", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.integer "category_id"
+    t.string "words"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["category_id"], name: "index_words_on_category_id"
+  end
+
 end

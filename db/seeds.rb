@@ -27,6 +27,12 @@ User.create!(
     )
 end
 
+categories = Category.order(:created_at)
+5.times do
+    words = Faker::Lorem.sentence(3)
+    categories.each { |category| category.words.create!(words: words)}
+end
+
 # More than 1 user
 99.times do |n|
     name = Faker::Name.name #this is from FAKER website
