@@ -41,8 +41,11 @@ class Admin::WordsController < ApplicationController
     end
  
    def destroy
-     Category.find(params[:id]).destroy
-     redirect_to admin_categories_path
+    @category = Category.find(params[:category_id])
+    Word.find(params[:id]).destroy
+    # @category = Category.find(params[:category_id])
+    # @word = Word.find(params[:id]).destroy
+     redirect_to admin_category_path(@category)
    end
  
    private

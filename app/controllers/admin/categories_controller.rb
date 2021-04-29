@@ -3,11 +3,11 @@ class Admin::CategoriesController < ApplicationController
   
    def new
      @category = Category.new
+     @category.words.build
    end
 
    def create
-     @category = Category.new(category_params)
-     if @category.save
+     if Category.create(category_params)
        redirect_to admin_categories_path
        flash[:success] = "Created successfully!"
      else
@@ -15,9 +15,10 @@ class Admin::CategoriesController < ApplicationController
        render 'new'
      end  
    end
+   
    def show
     @category = Category.find(params[:id])
-    @word = @category.words.find(params[:id])
+    # @word = @category.words.find(params[:id])
    end
 
    def edit
@@ -51,7 +52,7 @@ class Admin::CategoriesController < ApplicationController
   end
 
   def category_params
-    params.require(:category).permit(:title, :description)
+    params.require(:category).permit(:title, :description, words_attributes: [:words, :category_id])
   end
 
 end
