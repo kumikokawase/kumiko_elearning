@@ -9,13 +9,13 @@
 
 <div id="service">
     <div class="container">
-        <h4>No.<%= @category.id %> <%= @category.title %></h4>
+        <h4>ID: <%= @category.id %> | Title: <%= @category.title %></h4>
         <p>description: <%= @category.description %></p>
-
+        <p style="text-align:right"><%= link_to "Back to Category list", admin_categories_path %></p>
         <% if @category.words.any? %>
 
         <button type="button" class="btn btn-success btn-lg mb-3">
-          <%= link_to "Create New Word!" %></button>
+          <%= link_to "Create New Word!", new_admin_category_word_path(@category) %></button>
         
         <div class="centered">
           <table class="table table-striped">
@@ -32,7 +32,12 @@
               <tr>
                 <th scope="row"><%= word.id %></th>
                 <td><%= word.words %></td>
-                <td><button type="button" class="btn btn-warning mr-1"><%= link_to 'Edit', edit_admin_category_word_path(@category, word) %></button><button type="button" class="btn btn-secondary">Delete</button></td>
+                <td>
+                  <button type="button" class="btn btn-warning mr-1">
+                    <%= link_to 'Edit', edit_admin_category_word_path(@category, word) %></button>
+                  <button type="button" class="btn btn-secondary">
+                    <%= link_to 'Delete', admin_category_word_path(@category, word), method: :delete, data: { confirm: "You sure?" } %></button>
+                </td>
               </tr>
               <% end %>
             </tbody>            

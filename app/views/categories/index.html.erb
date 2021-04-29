@@ -28,10 +28,10 @@
         <table class="table table-striped">
         <thead>
             <tr>
-            <th scope="col">Category No.</th>
+            <th scope="col">Category ID</th>
             <th scope="col">Title</th>
             <th scope="col">Description</th>
-            <th scope="col">Words</th>
+            <th scope="col">total of Words</th>
             <th scope="col">Action</th>
             </tr>
         </thead>
@@ -41,7 +41,7 @@
             <th scope="row"><%= category.id %></th>
             <td><%= category.title %></td>
             <td><%= category.description %></td>
-            <td>5</td>
+            <td><%= category.words.ids.count %></td>
             <td><button type="button" class="btn btn-warning mr-1">learn</button></td>
             </tr>
             <% end %>
