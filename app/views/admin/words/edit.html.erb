@@ -13,6 +13,7 @@
         <div class="field">
             No.<%= @word.id %>
             <%= f.text_area :words, placeholder: "words", class: "w-100 p-2" %>
+            <%= render 'form' %>
         </div>
         <%= f.submit "Post", class: "btn btn-block btn-primary" %>
     <% end %>
