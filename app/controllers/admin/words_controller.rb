@@ -4,13 +4,12 @@ class Admin::WordsController < ApplicationController
     def new
       @category = Category.find(params[:category_id])
       @word = @category.words.new
-      @choice = Form::ChoiceCollection.new
+      3.times { @word.choices.build }
     end
  
     def create
       @category = Category.find(params[:category_id])
       @word = @category.words.new(word_params)
-      @choice = Form::ChoiceCollection.new(choice_collection_params)
       if @word.save
         redirect_to admin_category_path(@category)
         flash[:success] = "Created successfully!"
@@ -23,14 +22,12 @@ class Admin::WordsController < ApplicationController
     def edit
       @category = Category.find(params[:category_id])
       @word = @category.words.find(params[:id])
-      @choice = @word.choices.find(params[:id])
     end
  
     def update
       @category = Category.find(params[:category_id])
       @word = Word.find(params[:id])
-      @choice = @word.choices.find(params[:id])
-      if @wod.update_attributes(word_params)
+      if @word.update_attributes(word_params)
         redirect_to admin_category_path(@category)
         flash[:success] = "Saved!"
       else
@@ -58,12 +55,7 @@ class Admin::WordsController < ApplicationController
    end
 
    def word_params
-    params.require(:word).permit(:words, choices_attributes: [:word_id, :choices, :correct_ans])
+    params.require(:word).permit(:words, choices_attributes: [:id, :word_id, :choices, :correct_ans])
    end
-
-   def choice_collection_params
-    params.require(:form_choice_collection)
-    .permit(choices_attributes: [:choices, :correct_ans])
-    end
 
 end
