@@ -9,12 +9,6 @@
 
 <div id="service">
     <div class="container">
-    <%= form_for([:admin, @category, @word]) do |f| %>
-        <div class="field">
-            No.<%= @word.id %>
-            <%= f.text_area :words, placeholder: "words", class: "w-100 p-2" %>
-        </div>
-        <%= f.submit "Post", class: "btn btn-block btn-primary" %>
-    <% end %>
+    <%= render 'form' %>
     </div>
 </div>

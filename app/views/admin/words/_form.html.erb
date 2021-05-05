@@ -1,0 +1,14 @@
+<%= form_for([:admin, @category, @word]) do |f| %>
+    <div class="field">
+        No.<%= @word.id %>
+        <%= f.text_area :words, placeholder: "words", class: "w-100 p-2" %>
+    </div>
+        <%= f.fields_for :choices do |choice| %>
+            <div class="field">
+                <%= choice.text_field :choices %>
+                <%= choice.radio_button :correct_ans, true %>
+                <%= choice.label :correct_ans, "correct answer", value: true %>
+            </div>
+        <% end %>    
+        <%= f.submit "Post", class: "btn btn-block btn-primary" %>
+<% end %>

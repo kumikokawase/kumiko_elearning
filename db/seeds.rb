@@ -54,3 +54,21 @@ following = users[2..50]
 followers = users[3..40]
 following.each { |followed| user.follow(followed) }
 followers.each { |follower| follower.follow(user) }
+
+Choice.create!(
+    word_id: "1",
+    choices: "Fish",
+    correct_ans: true
+)
+
+Choice.create!(
+    word_id: "1",
+    choices: "Animal",
+    correct_ans: false
+)
+
+Choice.create!(
+    word_id: "1",
+    choices: "Fruit",
+    correct_ans: false
+)

@@ -28,4 +28,8 @@ Rails.application.routes.draw do
     end
   end
 
+  resources :words do
+    resources :choices, only: [:new, :create, :edit, :update, :destroy]
+  end
+
 end
